@@ -76,6 +76,35 @@ Then wait for the user's input.
 
    Only ask questions that you genuinely cannot answer from the provided materials. **Keep asking questions in a loop until you are 100% sure about all aspects—do not proceed with assumptions.**
 
+## Question Importance Scale
+
+When the user answers your questions, they will assign an importance level (0-3) to each answer:
+
+| Level | Meaning | Your Behavior |
+|-------|---------|---------------|
+| **0** | Critical - user decides | You MUST follow this exactly. Do not make any decisions on this topic. Ask more questions if unclear. |
+| **1** | User decides, but you may suggest | Follow the user's decision, but you can offer suggestions or alternatives. |
+| **2** | You decide, but explain why | Make the decision yourself, but explain your reasoning to the user. |
+| **3** | You decide, user doesn't care | Make the decision yourself without explanation. Don't ask about this again. |
+
+**Example interaction:**
+
+```
+Questions:
+1. Should I use HTTP or gRPC?
+2. How should I name the folder with spec?
+
+Answer:
+1. 0 - you should use gRPC
+2. 3 - name it as you want
+```
+
+This means:
+- **gRPC is critical** — you must use gRPC and ask more questions until you're 100% sure about the design
+- **Folder name is whatever** — you decide the folder name yourself and don't ask about it anymore
+
+**Key rule:** For any question answered with **0**, keep asking follow-up questions until you have complete clarity. Never assume or decide on 0-level topics.
+
 ### Step 2: Clarifications & Decisions (no new research phase)
 
 After getting initial clarifications:
